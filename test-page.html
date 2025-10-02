@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PageWheel Test Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #ffffff;
+      min-height: 100vh;
+      padding: 40px;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+    
+    h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .subtitle {
+      font-size: 20px;
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+    
+    .section {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    
+    h2 {
+      font-size: 24px;
+      margin-bottom: 16px;
+      color: #ffd700;
+    }
+    
+    .instruction {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    
+    kbd {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-family: "Monaco", "Courier New", monospace;
+      font-size: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .test-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+    
+    .test-link {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #ffffff;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+    
+    .test-link:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    .status {
+      background: rgba(0, 255, 127, 0.2);
+      border: 2px solid rgba(0, 255, 127, 0.5);
+      padding: 16px;
+      border-radius: 8px;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎡 PageWheel Test Page</h1>
+    <p class="subtitle">Test your PageWheel extension installation and features</p>
+    
+    <div class="section">
+      <h2>1. Quick Test</h2>
+      <div class="instruction">
+        Press <kbd>Ctrl+Shift+W</kbd> (or <kbd>⌘+Shift+W</kbd> on Mac) to open the PageWheel overlay.
+      </div>
+      <div class="instruction">
+        You should see a 3D Rolodex appear with this tab as one of the cards.
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>2. Navigation Test</h2>
+      <div class="instruction">
+        Once the overlay is open, use these controls:
+      </div>
+      <ul style="list-style: none; padding-left: 0;">
+        <li>✓ <kbd>↑</kbd> or <kbd>↓</kbd> - Navigate between cards</li>
+        <li>✓ Mouse wheel up/down - Navigate between cards</li>
+        <li>✓ <kbd>Enter</kbd> or <kbd>Space</kbd> - Switch to focused tab</li>
+        <li>✓ <kbd>Esc</kbd> - Close overlay</li>
+      </ul>
+    </div>
+    
+    <div class="section">
+      <h2>3. Mark & Tile Test</h2>
+      <div class="instruction">
+        Press <kbd>Ctrl+Shift+M</kbd> (or <kbd>⌘+Shift+M</kbd>) to mark this tab.
+      </div>
+      <div class="instruction">
+        Open the test links below in new tabs, mark a few more, then right-click and select "Tile 2 Marked Tabs" or "Tile 4 Marked Tabs".
+      </div>
+      
+      <div class="test-links">
+        <a href="test-page-1.html" target="_blank" class="test-link">Test Page 1</a>
+        <a href="test-page-2.html" target="_blank" class="test-link">Test Page 2</a>
+        <a href="test-page-3.html" target="_blank" class="test-link">Test Page 3</a>
+        <a href="test-page-4.html" target="_blank" class="test-link">Test Page 4</a>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>4. Settings Test</h2>
+      <div class="instruction">
+        Click the PageWheel icon in your toolbar, then click "⚙️ Settings".
+      </div>
+      <div class="instruction">
+        Try adjusting the animation speed, rotation angles, or other settings.
+      </div>
+      <div class="instruction">
+        Changes apply immediately - reopen the overlay to see the effect.
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>5. Visual Check</h2>
+      <div class="instruction">Expected behavior:</div>
+      <ul style="list-style: none; padding-left: 0;">
+        <li>✓ Front card shows live thumbnail with clear text</li>
+        <li>✓ Behind front card, you see header "slivers" of other tabs</li>
+        <li>✓ Cards rotate smoothly in 3D (no jitter)</li>
+        <li>✓ Blue background blur appears only during rotation</li>
+        <li>✓ Background becomes transparent when rotation stops</li>
+        <li>✓ Close button (×) is visible in top-right</li>
+      </ul>
+    </div>
+    
+    <div class="status">
+      ✨ If all tests pass, PageWheel is working correctly!
+    </div>
+  </div>
+  
+  <script>
+    // Test that PageWheel handles this page's JavaScript properly
+    console.log('PageWheel test page loaded');
+    
+    // Test keyboard event handling
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+        // If PageWheel is open, it should capture these
+        console.log('Arrow key pressed:', e.key);
+      }
+    });
+    
+    // Test that page can still scroll normally when overlay is closed
+    window.addEventListener('wheel', (e) => {
+      console.log('Wheel event:', e.deltaY);
+    });
+  </script>
+</body>
+</html>
