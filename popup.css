@@ -1,0 +1,176 @@
+/* PageWheel Popup Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 320px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: linear-gradient(135deg, #1a3a52 0%, #0d1f2d 100%);
+  color: #ffffff;
+}
+
+.popup-container {
+  padding: 20px;
+}
+
+/* Header */
+.popup-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.popup-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+}
+
+.popup-header h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #4dd0e1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Content */
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Buttons */
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, #4dd0e1 0%, #26a5b5 100%);
+  color: #0d1f2d;
+  font-size: 16px;
+  padding: 14px 24px;
+}
+
+.primary-btn:hover {
+  background: linear-gradient(135deg, #5ddaeb 0%, #36b5c5 100%);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 16px rgba(77, 208, 225, 0.4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.primary-btn:active {
+  transform: translateY(0);
+}
+
+.btn-icon {
+  font-size: 18px;
+}
+
+.secondary-btn {
+  background: rgba(26, 58, 82, 0.8);
+  color: #ffffff;
+  font-size: 13px;
+}
+
+.secondary-btn:hover {
+  background: rgba(36, 68, 92, 0.9);
+  transform: translateY(-1px);
+}
+
+.secondary-btn:active {
+  transform: translateY(0);
+}
+
+/* Shortcuts */
+.popup-shortcuts {
+  padding: 12px;
+  background: rgba(26, 58, 82, 0.6);
+  border-radius: 8px;
+  border: 1px solid rgba(77, 208, 225, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.shortcut-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.shortcut-label {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+kbd {
+  background: rgba(13, 31, 45, 0.8);
+  color: #4dd0e1;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-family: "Monaco", "Courier New", monospace;
+  border: 1px solid rgba(77, 208, 225, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Actions */
+.popup-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.popup-actions button {
+  flex: 1;
+}
+
+/* Footer */
+.popup-footer {
+  padding-top: 12px;
+  border-top: 1px solid rgba(77, 208, 225, 0.15);
+  text-align: center;
+}
+
+.footer-link {
+  color: rgba(77, 208, 225, 0.8);
+  text-decoration: none;
+  font-size: 11px;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: #4dd0e1;
+  text-decoration: underline;
+}
+
+/* Focus styles for accessibility */
+button:focus-visible {
+  outline: 3px solid rgba(77, 208, 225, 0.6);
+  outline-offset: 2px;
+}
+
+a:focus-visible {
+  outline: 2px solid rgba(77, 208, 225, 0.6);
+  outline-offset: 2px;
+  border-radius: 2px;
+}

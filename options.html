@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PageWheel Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="options-container">
+    <header class="options-header">
+      <img src="icons/icon48.png" alt="PageWheel" class="header-icon">
+      <div class="header-content">
+        <h1>PageWheel Settings</h1>
+        <p class="header-subtitle">Customize your vertical Rolodex experience</p>
+      </div>
+    </header>
+    
+    <main class="options-main">
+      <!-- Wheel / Motion Settings -->
+      <section class="settings-section">
+        <h2 class="section-title">
+          <span class="section-icon">🎡</span>
+          Wheel & Motion
+        </h2>
+        
+        <div class="setting-item">
+          <label for="animationDuration">Animation Duration</label>
+          <div class="setting-control">
+            <input type="range" id="animationDuration" min="100" max="300" step="10">
+            <span class="setting-value" id="animationDuration-value">160ms</span>
+          </div>
+          <p class="setting-hint">How long the flip animation takes</p>
+        </div>
+        
+        <div class="setting-item">
+          <label for="degreesPerStep">Rotation Degrees Per Step</label>
+          <div class="setting-control">
+            <input type="range" id="degreesPerStep" min="10" max="20" step="1">
+            <span class="setting-value" id="degreesPerStep-value">15°</span>
+          </div>
+          <p class="setting-hint">Rotation angle between cards</p>
+        </div>
+        
+        <div class="setting-item">
+          <label for="depthPerStep">Depth Per Step</label>
+          <div class="setting-control">
+            <input type="range" id="depthPerStep" min="30" max="100" step="5">
+            <span class="setting-value" id="depthPerStep-value">60px</span>
+          </div>
+          <p class="setting-hint">3D depth offset between cards</p>
+        </div>
+        
+        <div class="setting-item">
+          <label for="blurOnScrim">Scrim Blur</label>
+          <div class="setting-control">
+            <input type="range" id="blurOnScrim" min="0" max="12" step="1">
+            <span class="setting-value" id="blurOnScrim-value">8px</span>
+          </div>
+          <p class="setting-hint">Background blur during rotation</p>
+        </div>
+        
+        <div class="setting-item">
+          <label for="maxVisibleCards">Max Visible Cards</label>
+          <div class="setting-control">
+            <input type="range" id="maxVisibleCards" min="4" max="12" step="1">
+            <span class="setting-value" id="maxVisibleCards-value">8</span>
+          </div>
+          <p class="setting-hint">Number of cards to render in the stack</p>
+        </div>
+        
+        <div class="setting-item">
+          <label class="checkbox-label">
+            <input type="checkbox" id="showHostnames">
+            <span class="checkbox-text">Show Hostnames</span>
+          </label>
+          <p class="setting-hint">Display site hostnames on card headers</p>
+        </div>
+        
+        <div class="setting-item">
+          <label class="checkbox-label">
+            <input type="checkbox" id="reducedMotion">
+            <span class="checkbox-text">Reduced Motion Mode</span>
+          </label>
+          <p class="setting-hint">Shorter animations and less visual effects</p>
+        </div>
+      </section>
+      
+      <!-- Marks & Tiling Settings -->
+      <section class="settings-section">
+        <h2 class="section-title">
+          <span class="section-icon">⭐</span>
+          Marks & Tiling
+        </h2>
+        
+        <div class="setting-item">
+          <label for="maxMarkedTabs">Max Marked Tabs</label>
+          <div class="setting-control">
+            <input type="range" id="maxMarkedTabs" min="2" max="8" step="1">
+            <span class="setting-value" id="maxMarkedTabs-value">4</span>
+          </div>
+          <p class="setting-hint">Maximum number of tabs that can be marked</p>
+        </div>
+        
+        <div class="setting-item">
+          <label for="tilingGap">Tiling Gap</label>
+          <div class="setting-control">
+            <input type="range" id="tilingGap" min="0" max="50" step="5">
+            <span class="setting-value" id="tilingGap-value">10px</span>
+          </div>
+          <p class="setting-hint">Space between tiled windows</p>
+        </div>
+        
+        <div class="setting-item">
+          <label class="checkbox-label">
+            <input type="checkbox" id="raiseFirstWindow">
+            <span class="checkbox-text">Raise First Window</span>
+          </label>
+          <p class="setting-hint">Focus the first window after tiling</p>
+        </div>
+      </section>
+      
+      <!-- Security Settings -->
+      <section class="settings-section">
+        <h2 class="section-title">
+          <span class="section-icon">🔒</span>
+          Security
+        </h2>
+        
+        <div class="setting-item">
+          <label class="checkbox-label">
+            <input type="checkbox" id="allowFile">
+            <span class="checkbox-text">Allow file:// URLs</span>
+          </label>
+          <p class="setting-hint">Enable PageWheel on local file pages</p>
+        </div>
+        
+        <div class="setting-item">
+          <label class="checkbox-label">
+            <input type="checkbox" id="allowData">
+            <span class="checkbox-text">Allow data:// URLs</span>
+          </label>
+          <p class="setting-hint">Enable PageWheel on data URLs</p>
+        </div>
+        
+        <div class="setting-item">
+          <label class="checkbox-label">
+            <input type="checkbox" id="restrictInternalSchemes">
+            <span class="checkbox-text">Restrict Internal Schemes</span>
+          </label>
+          <p class="setting-hint">Block chrome://, edge://, and extension pages (recommended)</p>
+        </div>
+      </section>
+      
+      <!-- Privacy & Crash-safety Settings -->
+      <section class="settings-section">
+        <h2 class="section-title">
+          <span class="section-icon">🛡️</span>
+          Privacy & Crash-safety
+        </h2>
+        
+        <div class="setting-item">
+          <label for="loggingLevel">Logging Level</label>
+          <div class="setting-control">
+            <select id="loggingLevel">
+              <option value="error">Error</option>
+              <option value="warn">Warning</option>
+              <option value="info">Info</option>
+              <option value="debug">Debug</option>
+            </select>
+          </div>
+          <p class="setting-hint">Console logging verbosity (local only)</p>
+        </div>
+        
+        <div class="setting-item">
+          <label class="checkbox-label">
+            <input type="checkbox" id="noThumbnails">
+            <span class="checkbox-text">No Thumbnails Mode</span>
+          </label>
+          <p class="setting-hint">Show only favicons and titles (faster, more private)</p>
+        </div>
+      </section>
+      
+      <!-- Style Settings -->
+      <section class="settings-section">
+        <h2 class="section-title">
+          <span class="section-icon">🎨</span>
+          Style
+        </h2>
+        
+        <div class="setting-item">
+          <label for="theme">Theme</label>
+          <div class="setting-control">
+            <select id="theme">
+              <option value="dark">Dark</option>
+              <option value="light">Light (coming soon)</option>
+            </select>
+          </div>
+          <p class="setting-hint">Color theme for PageWheel</p>
+        </div>
+        
+        <div class="setting-item">
+          <label for="accentHue">Accent Hue</label>
+          <div class="setting-control">
+            <input type="range" id="accentHue" min="0" max="360" step="5">
+            <span class="setting-value" id="accentHue-value">180°</span>
+          </div>
+          <p class="setting-hint">Color hue for accents (180 = cyan)</p>
+        </div>
+        
+        <div class="setting-item">
+          <label for="accentSaturation">Accent Saturation</label>
+          <div class="setting-control">
+            <input type="range" id="accentSaturation" min="0" max="100" step="5">
+            <span class="setting-value" id="accentSaturation-value">70%</span>
+          </div>
+          <p class="setting-hint">Color saturation for accents</p>
+        </div>
+        
+        <div class="setting-item">
+          <label for="cardCornerRadius">Card Corner Radius</label>
+          <div class="setting-control">
+            <input type="range" id="cardCornerRadius" min="4" max="32" step="2">
+            <span class="setting-value" id="cardCornerRadius-value">16px</span>
+          </div>
+          <p class="setting-hint">Roundness of card corners</p>
+        </div>
+      </section>
+      
+      <!-- Power User Settings -->
+      <section class="settings-section">
+        <h2 class="section-title">
+          <span class="section-icon">⚡</span>
+          Power User
+        </h2>
+        
+        <div class="setting-item">
+          <label for="zIndexBase">Z-Index Base</label>
+          <div class="setting-control">
+            <input type="number" id="zIndexBase" min="1000" max="2147483640" step="1000">
+          </div>
+          <p class="setting-hint">Base z-index for overlay (for compatibility)</p>
+        </div>
+        
+        <div class="setting-item">
+          <label for="snapshotThrottle">Snapshot Throttle</label>
+          <div class="setting-control">
+            <input type="range" id="snapshotThrottle" min="50" max="500" step="50">
+            <span class="setting-value" id="snapshotThrottle-value">100ms</span>
+          </div>
+          <p class="setting-hint">Minimum time between thumbnail captures</p>
+        </div>
+        
+        <div class="setting-item">
+          <label class="checkbox-label">
+            <input type="checkbox" id="alternativeLayout">
+            <span class="checkbox-text">Alternative Layout (List Mode)</span>
+          </label>
+          <p class="setting-hint">Use simple list instead of 3D Rolodex (for low-end devices)</p>
+        </div>
+      </section>
+    </main>
+    
+    <footer class="options-footer">
+      <div class="footer-actions">
+        <button id="reset-btn" class="secondary-btn">Reset to Defaults</button>
+        <button id="save-btn" class="primary-btn">Save Settings</button>
+      </div>
+      <p class="footer-note">
+        Settings are saved automatically. Local data only – nothing leaves your browser.
+      </p>
+      <p class="footer-links">
+        <a href="https://github.com/danfaze/pagemarks-privacy" target="_blank">Privacy Policy</a>
+        <span class="separator">•</span>
+        <a href="chrome://extensions/shortcuts" target="_blank">Keyboard Shortcuts</a>
+      </p>
+    </footer>
+  </div>
+  
+  <div id="toast" class="toast">Settings saved!</div>
+  
+  <script src="options.js"></script>
+</body>
+</html>
