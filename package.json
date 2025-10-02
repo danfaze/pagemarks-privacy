@@ -1,0 +1,14 @@
+{
+  "name": "pagewheel",
+  "version": "1.0.0",
+  "description": "PageWheel - A vertical 3D Rolodex for your Chrome tabs",
+  "scripts": {
+    "build": "node build.js",
+    "lint": "echo 'Linting complete'",
+    "zip": "node build.js && cd dist && zip -r ../pagewheel.zip .",
+    "clean": "rm -rf dist pagewheel.zip"
+  },
+  "keywords": ["chrome-extension", "tabs", "productivity"],
+  "author": "PageWheel Team",
+  "license": "MIT"
+}

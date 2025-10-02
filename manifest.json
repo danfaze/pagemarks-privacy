@@ -1,0 +1,56 @@
+{
+  "manifest_version": 3,
+  "name": "PageWheel",
+  "version": "1.0.0",
+  "description": "Turn your tabs into a face-on vertical Rolodex with smooth 3D flipping",
+  "permissions": [
+    "tabs",
+    "storage",
+    "contextMenus"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "commands": {
+    "toggle-overlay": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+W",
+        "mac": "Command+Shift+W"
+      },
+      "description": "Toggle PageWheel overlay"
+    },
+    "mark-tab": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+M",
+        "mac": "Command+Shift+M"
+      },
+      "description": "Mark/unmark current tab"
+    },
+    "tile-2": {
+      "description": "Tile 2 marked tabs side-by-side"
+    },
+    "tile-4": {
+      "description": "Tile 4 marked tabs in quad layout"
+    }
+  },
+  "options_page": "options.html"
+}

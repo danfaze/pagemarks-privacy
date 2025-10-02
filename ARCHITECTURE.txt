@@ -1,0 +1,134 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                          PAGEWHEEL ARCHITECTURE                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+┌──────────────────────────────────────────────────────────────────────────┐
+│                          CHROME EXTENSION APIs                           │
+│  chrome.tabs • chrome.storage • chrome.commands • chrome.scripting      │
+│  chrome.contextMenus • chrome.windows • chrome.runtime                  │
+└──────────────────────────────────────────────────────────────────────────┘
+                                    │
+                    ┌───────────────┴───────────────┐
+                    │                               │
+         ┌──────────▼──────────┐         ┌─────────▼─────────┐
+         │  BACKGROUND SERVICE │         │   CONTENT SCRIPT  │
+         │      WORKER         │◄────────┤    (Injected)     │
+         │  (background.js)    │ Message │  (content.js)     │
+         │                     │   Bus   │                   │
+         └──────────┬──────────┘         └─────────┬─────────┘
+                    │                               │
+       ┌────────────┼────────────┐                 │
+       │            │            │                 │
+       │            │            │                 │
+┌──────▼─────┐ ┌───▼────┐ ┌────▼──────┐    ┌─────▼──────┐
+│  Settings  │ │ Marked │ │  Tiling   │    │  3D Stack  │
+│  Storage   │ │  Tabs  │ │  Engine   │    │ (Shadow DOM)│
+│ (sync/local)│ │ Store  │ │           │    │            │
+└────────────┘ └────────┘ └───────────┘    └────────────┘
+                    │                               │
+         ┌──────────┴──────────┐         ┌─────────┴─────────┐
+         │                     │         │                   │
+    ┌────▼────┐          ┌─────▼────┐   │   ┌───────────┐   │
+    │ Popup   │          │ Options  │   │   │   Cards   │   │
+    │  UI     │          │   Page   │   │   │  (Front/  │   │
+    │(popup   │          │(options  │   │   │   Back)   │   │
+    │.html)   │          │.html)    │   │   └───────────┘   │
+    └─────────┘          └──────────┘   │                   │
+                                         │   ┌───────────┐   │
+                                         │   │  Scrim    │   │
+                                         │   │ (Blur BG) │   │
+                                         │   └───────────┘   │
+                                         │                   │
+                                         │   ┌───────────┐   │
+                                         │   │ Controls  │   │
+                                         │   │ (↑↓⎵Esc)  │   │
+                                         │   └───────────┘   │
+                                         └───────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════
+
+KEY COMPONENTS:
+
+1. BACKGROUND SERVICE WORKER (background.js)
+   • Message bus with 8 operations
+   • Tab querying and security filtering
+   • Thumbnail capture with focus restoration
+   • Marked tabs storage (chrome.storage.local)
+   • Window tiling (2-up, 4-up layouts)
+   • Settings management (chrome.storage.sync)
+   • Command handlers (Ctrl+Shift+W, Ctrl+Shift+M)
+   • Context menu items
+
+2. CONTENT OVERLAY (content.js + content.css)
+   • Shadow DOM for style isolation
+   • 3D card stack with rotateX() transforms
+   • Capture-phase event listeners
+   • Lazy thumbnail loading
+   • Scrim state machine (visible during rotation)
+   • Z-ordering with isolation:isolate
+   • AbortController cleanup
+
+3. POPUP (popup.html/js/css)
+   • Quick toggle button
+   • Mark tab button
+   • Settings link
+   • Keyboard shortcuts display
+
+4. OPTIONS PAGE (options.html/js/css)
+   • 25+ settings across 6 categories
+   • Live value display on sliders
+   • Auto-save to chrome.storage.sync
+   • Reset to defaults
+   • Toast notifications
+
+═══════════════════════════════════════════════════════════════════════════
+
+DATA FLOW:
+
+User Action → Command/Click → Background Worker → Message Bus
+                                      ↓
+                    Inject Script → Content Overlay → DOM Manipulation
+                                      ↓
+                              Update UI → User Sees Result
+
+Settings Flow:
+Options Page → chrome.storage.sync → Background Cache → Content Overlay
+
+Thumbnail Flow:
+Content Request → Background → captureVisibleTab → Focus Restore → Return Data
+
+═══════════════════════════════════════════════════════════════════════════
+
+FILE STRUCTURE:
+
+dist/
+├── manifest.json          (Extension configuration)
+├── background.js          (Service worker - 480 lines)
+├── content.js             (Overlay script - 600+ lines)
+├── content.css            (3D styling - 6.8KB)
+├── popup.html/js/css      (Quick actions UI)
+├── options.html/js/css    (Settings page)
+└── icons/                 (16, 32, 48, 128px)
+
+═══════════════════════════════════════════════════════════════════════════
+
+PERMISSIONS:
+
+• tabs              - Query and switch tabs
+• storage           - Save settings and marked tabs
+• contextMenus      - Right-click menu items
+• host_permissions  - Inject scripts and capture thumbnails
+  (<all_urls>)
+
+═══════════════════════════════════════════════════════════════════════════
+
+SECURITY:
+
+✓ Protocol filtering (blocks chrome://, edge://, chrome-extension:)
+✓ Optional file:// and data:// support (off by default)
+✓ Message bus allowlist (unknown ops rejected)
+✓ Input validation on all payloads
+✓ No data collection or external servers
+✓ Local storage only (sync via Chrome if enabled)
+
+═══════════════════════════════════════════════════════════════════════════

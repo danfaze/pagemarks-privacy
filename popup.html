@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PageWheel</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <div class="popup-header">
+      <img src="icons/icon48.png" alt="PageWheel" class="popup-icon">
+      <h1>PageWheel</h1>
+    </div>
+    
+    <div class="popup-content">
+      <button id="toggle-btn" class="primary-btn">
+        <span class="btn-icon">⚡</span>
+        Open PageWheel
+      </button>
+      
+      <div class="popup-shortcuts">
+        <div class="shortcut-item">
+          <span class="shortcut-label">Toggle overlay:</span>
+          <kbd>Ctrl+Shift+W</kbd>
+        </div>
+        <div class="shortcut-item">
+          <span class="shortcut-label">Mark tab:</span>
+          <kbd>Ctrl+Shift+M</kbd>
+        </div>
+      </div>
+      
+      <div class="popup-actions">
+        <button id="settings-btn" class="secondary-btn">
+          ⚙️ Settings
+        </button>
+        <button id="mark-btn" class="secondary-btn">
+          ⭐ Mark Tab
+        </button>
+      </div>
+      
+      <div class="popup-footer">
+        <a href="https://github.com/danfaze/pagemarks-privacy" target="_blank" class="footer-link">
+          Privacy Policy
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
